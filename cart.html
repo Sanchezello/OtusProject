@@ -1,0 +1,441 @@
+<section id="wrapper">
+        
+          
+<aside id="notifications">
+  <div class="notifications-container container">
+    
+    
+    
+      </div>
+</aside>
+        
+
+        
+        <div class="container">
+          
+            <nav data-depth="1" class="breadcrumb">
+  <ol>
+    
+              
+          <li>
+                          <span>Home</span>
+                      </li>
+        
+          
+  </ol>
+</nav>
+          
+
+          <div class="row">
+            
+
+            
+  <div id="content-wrapper" class="js-content-wrapper col-xs-12">
+    
+    
+  <section id="content">
+    <div class="row">
+      <div class="cart-grid-body col-xs-12 col-lg-8">
+        
+            
+  <section id="checkout-personal-information-step" class="checkout-step -reachable -complete -clickable">
+    <h1 class="step-title js-step-title h3">
+      <i class="material-icons rtl-no-flip done"></i>
+      <span class="step-number">1</span>
+      Personal Information
+      <span class="step-edit text-muted"><i class="material-icons edit">mode_edit</i> Edit</span>
+    </h1>
+
+    <div class="content">
+      
+  
+
+  
+    <p class="identity">
+            Connected as <a href="http://localhost:8082/identity">John DOE</a>.
+    </p>
+    <p>
+            Not you? <a href="http://localhost:8082/?mylogout=">Log out</a>
+    </p>
+          <p><small>If you sign out now, your cart will be emptied.</small></p>
+    
+    <div class="clearfix">
+      <form method="GET" action="http://localhost:8082/order">
+        <button class="continue btn btn-primary float-xs-right" name="controller" type="submit" value="order">
+          Continue
+        </button>
+      </form>
+
+    </div>
+
+  
+    </div>
+  </section>
+
+
+  
+  <section id="checkout-addresses-step" class="checkout-step -reachable -complete -clickable">
+    <h1 class="step-title js-step-title h3">
+      <i class="material-icons rtl-no-flip done"></i>
+      <span class="step-number">2</span>
+      Addresses
+      <span class="step-edit text-muted"><i class="material-icons edit">mode_edit</i> Edit</span>
+    </h1>
+
+    <div class="content">
+      
+  <div class="js-address-form">
+    <form method="POST" data-id-address="0" action="//localhost:8082/order?id_address=0" data-refresh-url="//localhost:8082/order?ajax=1&amp;action=addressForm">
+
+              <p>
+                      The selected address will be used both as your personal address (for invoice) and as your delivery address.
+                  </p>
+      
+              <div id="delivery-addresses" class="address-selector js-address-selector">
+          
+      <article class="js-address-item address-item selected" id="id_address_delivery-address-2">
+      <header class="h4">
+        <label class="radio-block">
+          <span class="custom-radio">
+            <input type="radio" name="id_address_delivery" value="2" checked="">
+            <span></span>
+          </span>
+          <span class="address-alias h4">Mon adresse</span>
+          <div class="address">John DOE<br>My Company<br>16, Main street<br>2nd floor<br>75002 Paris<br>France<br>0102030405</div>
+        </label>
+      </header>
+      <hr>
+      <footer class="address-footer">
+                  <a class="edit-address text-muted" data-link-action="edit-address" href="//localhost:8082/order?id_address=2&amp;editAddress=delivery&amp;token=c2f789093c4c886011c80adc8c356677">
+            <i class="material-icons edit"></i>Edit
+          </a>
+          <a class="delete-address text-muted" data-link-action="delete-address" href="//localhost:8082/order?id_address=2&amp;deleteAddress=1&amp;token=c2f789093c4c886011c80adc8c356677">
+            <i class="material-icons delete"></i>Delete
+          </a>
+              </footer>
+    </article>
+      <article class="js-address-item address-item" id="id_address_delivery-address-5">
+      <header class="h4">
+        <label class="radio-block">
+          <span class="custom-radio">
+            <input type="radio" name="id_address_delivery" value="5">
+            <span></span>
+          </span>
+          <span class="address-alias h4">My address</span>
+          <div class="address">John DOE<br>My Company<br>16, Main street 2nd floor<br>Miami, Florida 33133<br>United States<br>0102030405</div>
+        </label>
+      </header>
+      <hr>
+      <footer class="address-footer">
+                  <a class="edit-address text-muted" data-link-action="edit-address" href="//localhost:8082/order?id_address=5&amp;editAddress=delivery&amp;token=c2f789093c4c886011c80adc8c356677">
+            <i class="material-icons edit"></i>Edit
+          </a>
+          <a class="delete-address text-muted" data-link-action="delete-address" href="//localhost:8082/order?id_address=5&amp;deleteAddress=1&amp;token=c2f789093c4c886011c80adc8c356677">
+            <i class="material-icons delete"></i>Delete
+          </a>
+              </footer>
+    </article>
+        <p>
+      <button class="ps-hidden-by-js form-control-submit center-block" type="submit" style="display: none;">Save</button>
+    </p>
+  
+        </div>
+
+                  <p class="alert alert-danger js-address-error" name="alert-delivery" style="display: none">Your address is incomplete, please update it.</p>
+        
+        <p class="add-address">
+          <a href="http://localhost:8082/order?newAddress=delivery"><i class="material-icons"></i>add new address</a>
+        </p>
+
+                  <p>
+            <a data-link-action="different-invoice-address" href="http://localhost:8082/order?use_same_address=0">
+              Billing address differs from shipping address
+            </a>
+          </p>
+        
+      
+      
+              <div class="clearfix">
+          <button type="submit" class="btn btn-primary continue float-xs-right" name="confirm-addresses" value="1">
+            Continue
+          </button>
+          <input type="hidden" id="not-valid-addresses" class="js-not-valid-addresses" value="">
+        </div>
+      
+    </form>
+    
+  </div>
+
+    </div>
+  </section>
+
+
+  
+  <section id="checkout-delivery-step" class="checkout-step -current -reachable js-current-step -clickable">
+    <h1 class="step-title js-step-title h3">
+      <i class="material-icons rtl-no-flip done"></i>
+      <span class="step-number">3</span>
+      Shipping Method
+      <span class="step-edit text-muted"><i class="material-icons edit">mode_edit</i> Edit</span>
+    </h1>
+
+    <div class="content">
+      
+  <div id="hook-display-before-carrier">
+    
+  </div>
+
+  <div class="delivery-options-list">
+          <form class="clearfix" id="js-delivery" data-url-update="//localhost:8082/order?ajax=1&amp;action=selectDeliveryOption" method="post">
+        <div class="form-fields">
+          
+            <div class="delivery-options">
+                                <div class="row delivery-option js-delivery-option">
+                    <div class="col-sm-1">
+                      <span class="custom-radio float-xs-left">
+                        <input type="radio" name="delivery_option[2]" id="delivery_option_1" value="1," checked="">
+                        <span></span>
+                      </span>
+                    </div>
+                    <label for="delivery_option_1" class="col-xs-9 col-sm-11 delivery-option-2">
+                      <div class="row">
+                        <div class="col-sm-5 col-xs-12">
+                          <div class="row carrier">
+                                                        <div class="col-xs-12 carriere-name-container">
+                              <span class="h6 carrier-name">Click and collect</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                          <span class="carrier-delay">Pick up in-store</span>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                          <span class="carrier-price">Free</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="row carrier-extra-content js-carrier-extra-content">
+                    
+                  </div>
+                  <div class="clearfix"></div>
+                                <div class="row delivery-option js-delivery-option">
+                    <div class="col-sm-1">
+                      <span class="custom-radio float-xs-left">
+                        <input type="radio" name="delivery_option[2]" id="delivery_option_2" value="2,">
+                        <span></span>
+                      </span>
+                    </div>
+                    <label for="delivery_option_2" class="col-xs-9 col-sm-11 delivery-option-2">
+                      <div class="row">
+                        <div class="col-sm-5 col-xs-12">
+                          <div class="row carrier carrier-hasLogo">
+                                                        <div class="col-xs-12 col-md-4 carrier-logo">
+                                <img src="/img/s/2.jpg" alt="My carrier" loading="lazy">
+                            </div>
+                                                        <div class="col-xs-12 carriere-name-container col-md-8">
+                              <span class="h6 carrier-name">My carrier</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                          <span class="carrier-delay">Delivery next day!</span>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                          <span class="carrier-price">€7.00 tax incl.</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="row carrier-extra-content js-carrier-extra-content" style="display:none;">
+                    
+                  </div>
+                  <div class="clearfix"></div>
+                          </div>
+          
+          <div class="order-options">
+            <div id="delivery">
+              <label for="delivery_message">If you would like to add a comment about your order, please write it in the field below.</label>
+              <textarea rows="2" cols="120" id="delivery_message" name="delivery_message"></textarea>
+            </div>
+
+            
+            
+          </div>
+        </div>
+        <button type="submit" class="continue btn btn-primary float-xs-right" name="confirmDeliveryOption" value="1">
+          Continue
+        </button>
+      </form>
+      </div>
+
+  <div id="hook-display-after-carrier">
+    
+  </div>
+
+  <div id="extra_carrier"></div>
+
+    </div>
+  </section>
+
+
+  
+  <section class="checkout-step -unreachable" id="checkout-payment-step">
+    <h1 class="step-title js-step-title h3">
+      <span class="step-number">4</span> Payment
+    </h1>
+  </section>
+
+
+
+        
+      </div>
+      <div class="cart-grid-right col-xs-12 col-lg-4">
+        
+          <section id="js-checkout-summary" class="card js-cart" data-refresh-url="http://localhost:8082/cart?ajax=1&amp;action=refresh">
+  <div class="card-block">
+    
+      <div class="cart-summary-top js-cart-summary-top">
+  
+</div>
+    
+
+    
+      
+ <div class="cart-summary-products js-cart-summary-products">
+  <p>1 item</p>
+
+  <p>
+    <a href="#" data-toggle="collapse" data-target="#cart-summary-product-list" class="js-show-details">
+      show details
+      <i class="material-icons">expand_more</i>
+    </a>
+  </p>
+
+  
+    <div class="collapse" id="cart-summary-product-list">
+      <ul class="media-list">
+                  <li class="media">
+  <div class="media-left">
+    <a href="http://localhost:8082/1-1-hummingbird-printed-t-shirt.html#/1-size-s/8-color-white" title="Hummingbird printed t-shirt">
+              <picture>
+                              <img class="media-object" src="http://localhost:8082/2-small_default/hummingbird-printed-t-shirt.jpg" alt="Hummingbird printed t-shirt" loading="lazy">
+        </picture>
+          </a>
+  </div>
+  <div class="media-body">
+    <span class="product-name">
+        <a href="http://localhost:8082/1-1-hummingbird-printed-t-shirt.html#/1-size-s/8-color-white" target="_blank" rel="noopener noreferrer nofollow">Hummingbird printed t-shirt</a>
+    </span>
+    <span class="product-quantity">x1</span>
+    <span class="product-price float-xs-right">€19.12</span>
+    
+            <div class="product-line-info product-line-info-secondary text-muted">
+            <span class="label">Size:</span>
+            <span class="value">S </span>
+        </div>
+            <div class="product-line-info product-line-info-secondary text-muted">
+            <span class="label">Color:</span>
+            <span class="value">White</span>
+        </div>
+        <br>
+  </div>
+
+</li>
+              </ul>
+    </div>
+  
+</div>
+    
+
+    
+      <div class="card-block cart-summary-subtotals-container js-cart-summary-subtotals-container">
+
+            <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-products">
+
+        <span class="label">
+            Subtotal
+        </span>
+
+        <span class="value">
+          €19.12
+        </span>
+      </div>
+                      <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-shipping">
+
+        <span class="label">
+            Shipping
+        </span>
+
+        <span class="value">
+          Free
+        </span>
+      </div>
+            
+</div>
+
+    
+  </div>
+
+  
+    <div class="card-block cart-summary-totals js-cart-summary-totals">
+
+  
+          <div class="cart-summary-line cart-total">
+        <span class="label">Total&nbsp;(tax incl.)</span>
+        <span class="value">€19.12</span>
+      </div>
+      
+
+  
+      
+
+</div>
+  
+
+  
+      
+
+</section>
+        
+        <div class="blockreassurance_product">
+            <div>
+            <span class="item-product">
+                                                        <img class="svg invisible" src="//modules/blockreassurance/views/img/reassurance/pack2/security.svg">
+                                    &nbsp;
+            </span>
+                          <span class="block-title" style="color:#000000;">Security policy</span>
+              <p style="color:#000000;">(edit with the Customer Reassurance module)</p>
+                    </div>
+            <div>
+            <span class="item-product">
+                                                        <img class="svg invisible" src="//modules/blockreassurance/views/img/reassurance/pack2/carrier.svg">
+                                    &nbsp;
+            </span>
+                          <span class="block-title" style="color:#000000;">Delivery policy</span>
+              <p style="color:#000000;">(edit with the Customer Reassurance module)</p>
+                    </div>
+            <div>
+            <span class="item-product">
+                                                        <img class="svg invisible" src="//modules/blockreassurance/views/img/reassurance/pack2/parcel.svg">
+                                    &nbsp;
+            </span>
+                          <span class="block-title" style="color:#000000;">Return policy</span>
+              <p style="color:#000000;">(edit with the Customer Reassurance module)</p>
+                    </div>
+        <div class="clearfix"></div>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+
+
+            
+          </div>
+        </div>
+        
+      </section>

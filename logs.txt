@@ -1,0 +1,456 @@
+Started by user unknown or anonymous
+Obtained Jenkinsfile from git https://github.com/Prokhor/ProjectGodzilla.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/PrestaShop-Tests
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/PrestaShop-Tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Prokhor/ProjectGodzilla.git # timeout=10
+Fetching upstream changes from https://github.com/Prokhor/ProjectGodzilla.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Prokhor/ProjectGodzilla.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision f13c5bcd146b8b0110b8dd44f7c4f063f12a3894 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f13c5bcd146b8b0110b8dd44f7c4f063f12a3894 # timeout=10
+Commit message: "Меняем тест на добавление в корзину исходя из базового набора данных"
+ > git rev-list --no-walk 2b530a29ee83c5394470a7b4613c145bf4fb8105 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/PrestaShop-Tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Prokhor/ProjectGodzilla.git # timeout=10
+Fetching upstream changes from https://github.com/Prokhor/ProjectGodzilla.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Prokhor/ProjectGodzilla.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision f13c5bcd146b8b0110b8dd44f7c4f063f12a3894 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f13c5bcd146b8b0110b8dd44f7c4f063f12a3894 # timeout=10
+Commit message: "Меняем тест на добавление в корзину исходя из базового набора данных"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] echo
+Создаём виртуальное окружение...
+[Pipeline] sh
++ python3 -m venv venv
+
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/PrestaShop-Tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/PrestaShop-Tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=# 
++ PS1=(venv) # 
++ export PS1
++ hash -r
++ pip install -r requirements.txt
+Requirement already satisfied: pytest in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 1)) (9.0.2)
+Requirement already satisfied: selenium in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 2)) (4.41.0)
+Requirement already satisfied: requests in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 3)) (2.32.5)
+Requirement already satisfied: allure-pytest in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 4)) (2.15.3)
+Requirement already satisfied: webdriver-manager in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 5)) (4.0.2)
+Requirement already satisfied: pytest-html in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 7)) (4.2.0)
+Requirement already satisfied: pytest-xdist in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 8)) (3.8.0)
+Requirement already satisfied: iniconfig>=1.0.1 in ./venv/lib/python3.13/site-packages (from pytest->-r requirements.txt (line 1)) (2.3.0)
+Requirement already satisfied: packaging>=22 in ./venv/lib/python3.13/site-packages (from pytest->-r requirements.txt (line 1)) (26.0)
+Requirement already satisfied: pluggy<2,>=1.5 in ./venv/lib/python3.13/site-packages (from pytest->-r requirements.txt (line 1)) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in ./venv/lib/python3.13/site-packages (from pytest->-r requirements.txt (line 1)) (2.19.2)
+Requirement already satisfied: certifi>=2026.1.4 in ./venv/lib/python3.13/site-packages (from selenium->-r requirements.txt (line 2)) (2026.2.25)
+Requirement already satisfied: trio<1.0,>=0.31.0 in ./venv/lib/python3.13/site-packages (from selenium->-r requirements.txt (line 2)) (0.33.0)
+Requirement already satisfied: trio-websocket<1.0,>=0.12.2 in ./venv/lib/python3.13/site-packages (from selenium->-r requirements.txt (line 2)) (0.12.2)
+Requirement already satisfied: typing_extensions<5.0,>=4.15.0 in ./venv/lib/python3.13/site-packages (from selenium->-r requirements.txt (line 2)) (4.15.0)
+Requirement already satisfied: urllib3<3.0,>=2.6.3 in ./venv/lib/python3.13/site-packages (from urllib3[socks]<3.0,>=2.6.3->selenium->-r requirements.txt (line 2)) (2.6.3)
+Requirement already satisfied: websocket-client<2.0,>=1.8.0 in ./venv/lib/python3.13/site-packages (from selenium->-r requirements.txt (line 2)) (1.9.0)
+Requirement already satisfied: attrs>=23.2.0 in ./venv/lib/python3.13/site-packages (from trio<1.0,>=0.31.0->selenium->-r requirements.txt (line 2)) (25.4.0)
+Requirement already satisfied: sortedcontainers in ./venv/lib/python3.13/site-packages (from trio<1.0,>=0.31.0->selenium->-r requirements.txt (line 2)) (2.4.0)
+Requirement already satisfied: idna in ./venv/lib/python3.13/site-packages (from trio<1.0,>=0.31.0->selenium->-r requirements.txt (line 2)) (3.11)
+Requirement already satisfied: outcome in ./venv/lib/python3.13/site-packages (from trio<1.0,>=0.31.0->selenium->-r requirements.txt (line 2)) (1.3.0.post0)
+Requirement already satisfied: sniffio>=1.3.0 in ./venv/lib/python3.13/site-packages (from trio<1.0,>=0.31.0->selenium->-r requirements.txt (line 2)) (1.3.1)
+Requirement already satisfied: wsproto>=0.14 in ./venv/lib/python3.13/site-packages (from trio-websocket<1.0,>=0.12.2->selenium->-r requirements.txt (line 2)) (1.3.2)
+Requirement already satisfied: pysocks!=1.5.7,<2.0,>=1.5.6 in ./venv/lib/python3.13/site-packages (from urllib3[socks]<3.0,>=2.6.3->selenium->-r requirements.txt (line 2)) (1.7.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./venv/lib/python3.13/site-packages (from requests->-r requirements.txt (line 3)) (3.4.5)
+Requirement already satisfied: allure-python-commons==2.15.3 in ./venv/lib/python3.13/site-packages (from allure-pytest->-r requirements.txt (line 4)) (2.15.3)
+Requirement already satisfied: python-dotenv in ./venv/lib/python3.13/site-packages (from webdriver-manager->-r requirements.txt (line 5)) (1.2.2)
+Requirement already satisfied: jinja2>=3 in ./venv/lib/python3.13/site-packages (from pytest-html->-r requirements.txt (line 7)) (3.1.6)
+Requirement already satisfied: pytest-metadata>=2 in ./venv/lib/python3.13/site-packages (from pytest-html->-r requirements.txt (line 7)) (3.1.1)
+Requirement already satisfied: execnet>=2.1 in ./venv/lib/python3.13/site-packages (from pytest-xdist->-r requirements.txt (line 8)) (2.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.13/site-packages (from jinja2>=3->pytest-html->-r requirements.txt (line 7)) (3.0.3)
+Requirement already satisfied: h11<1,>=0.16.0 in ./venv/lib/python3.13/site-packages (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium->-r requirements.txt (line 2)) (0.16.0)
++ pip install allure-pytest
+Requirement already satisfied: allure-pytest in ./venv/lib/python3.13/site-packages (2.15.3)
+Requirement already satisfied: pytest>=4.5.0 in ./venv/lib/python3.13/site-packages (from allure-pytest) (9.0.2)
+Requirement already satisfied: allure-python-commons==2.15.3 in ./venv/lib/python3.13/site-packages (from allure-pytest) (2.15.3)
+Requirement already satisfied: attrs>=16.0.0 in ./venv/lib/python3.13/site-packages (from allure-python-commons==2.15.3->allure-pytest) (25.4.0)
+
+Requirement already satisfied: pluggy>=0.4.0 in ./venv/lib/python3.13/site-packages (from allure-python-commons==2.15.3->allure-pytest) (1.6.0)
+Requirement already satisfied: iniconfig>=1.0.1 in ./venv/lib/python3.13/site-packages (from pytest>=4.5.0->allure-pytest) (2.3.0)
+Requirement already satisfied: packaging>=22 in ./venv/lib/python3.13/site-packages (from pytest>=4.5.0->allure-pytest) (26.0)
+Requirement already satisfied: pygments>=2.7.2 in ./venv/lib/python3.13/site-packages (from pytest>=4.5.0->allure-pytest) (2.19.2)
++ pip list
+Package               Version
+--------------------- -----------
+allure-pytest         2.15.3
+allure-python-commons 2.15.3
+attrs                 25.4.0
+certifi               2026.2.25
+charset-normalizer    3.4.5
+execnet               2.1.2
+h11                   0.16.0
+idna                  3.11
+iniconfig             2.3.0
+Jinja2                3.1.6
+MarkupSafe            3.0.3
+outcome               1.3.0.post0
+packaging             26.0
+pip                   25.1.1
+pluggy                1.6.0
+Pygments              2.19.2
+PySocks               1.7.1
+pytest                9.0.2
+pytest-html           4.2.0
+pytest-metadata       3.1.1
+pytest-xdist          3.8.0
+python-dotenv         1.2.2
+requests              2.32.5
+selenium              4.41.0
+sniffio               1.3.1
+sortedcontainers      2.4.0
+trio                  0.33.0
+trio-websocket        0.12.2
+typing_extensions     4.15.0
+urllib3               2.6.3
+webdriver-manager     4.0.2
+websocket-client      1.9.0
+wsproto               1.3.2
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] echo
+Запуск тестов...
+[Pipeline] sh
+
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/PrestaShop-Tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/PrestaShop-Tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=# 
++ PS1=(venv) # 
++ export PS1
++ hash -r
++ pytest tests/ui/test_checkout.py --alluredir=allure-results -v
+
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /var/jenkins_home/workspace/PrestaShop-Tests/venv/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.5', 'Platform': 'Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'allure-pytest': '2.15.3', 'xdist': '3.8.0', 'metadata': '3.1.1', 'html': '4.2.0'}, 'CI': 'true', 'BUILD_NUMBER': '23', 'BUILD_ID': '23', 'BUILD_URL': 'http://localhost:8080/job/PrestaShop-Tests/23/', 'NODE_NAME': 'built-in', 'JOB_NAME': 'PrestaShop-Tests', 'BUILD_TAG': 'jenkins-PrestaShop-Tests-23', 'EXECUTOR_NUMBER': '1', 'JENKINS_URL': 'http://localhost:8080/', 'JAVA_HOME': '/opt/java/openjdk', 'WORKSPACE': '/var/jenkins_home/workspace/PrestaShop-Tests', 'GIT_COMMIT': 'f13c5bcd146b8b0110b8dd44f7c4f063f12a3894', 'GIT_URL': 'https://github.com/Prokhor/ProjectGodzilla.git', 'GIT_BRANCH': 'origin/master'}
+rootdir: /var/jenkins_home/workspace/PrestaShop-Tests
+plugins: allure-pytest-2.15.3, xdist-3.8.0, metadata-3.1.1, html-4.2.0
+collecting ... collected 1 item
+
+
+FAILED                    [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_checkout_order ______________________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="67ee86d85ab85d908293cd4b6645eef2")>
+
+    @allure.title("Оформление заказа")
+    @allure.description("Залогиненный пользователь оформляет заказ с оплатой через bank wire")
+    def test_checkout_order(driver):
+        login_page = LoginPage(driver)
+        product_page = ProductPage(driver)
+        cart_page = CartPage(driver)
+        checkout_page = CheckoutPage(driver)
+    
+        with allure.step("Логинимся"):
+            login_page.open_login_page()
+            login_page.enter_email("pub@prestashop.com")
+            login_page.enter_password("1qaz@WSX3edc")
+            login_page.click_sign_in()
+    
+        with allure.step("Добавляем товар в корзину"):
+            driver.get(FRONT_URL)
+            product_page.open_first_product()
+            product_page.add_to_cart()
+            product_page.proceed_to_checkout_from_modal()
+    
+        with allure.step("Переходим к оформлению заказа из корзины"):
+            checkout_page.go_to_checkout_from_cart()
+    
+        with allure.step("Заполняем адрес (или подтверждаем существующий)"):
+            checkout_page.fill_address_step()
+    
+        with allure.step("Подтверждаем способ доставки"):
+>           checkout_page.accept_shipping_method()
+
+tests/ui/test_checkout.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/checkout_page.py:43: in accept_shipping_method
+    shipping_radio.click()
+venv/lib/python3.13/site-packages/selenium/webdriver/remote/webelement.py:114: in click
+    self._execute(Command.CLICK_ELEMENT)
+venv/lib/python3.13/site-packages/selenium/webdriver/remote/webelement.py:508: in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv/lib/python3.13/site-packages/selenium/webdriver/remote/webdriver.py:446: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7543c2f4c440>
+response = {'status': 400, 'value': '{"value":{"error":"element click intercepted","message":"element click intercepted: Element ...\\n#17 0x5930b6e10b68 \\u003Cunknown>\\n#18 0x5930b6e224ee \\u003Cunknown>\\n#19 0x70f3f20d3b7b \\u003Cunknown>\\n"}}'}
+
+    def check_response(self, response: dict[str, Any]) -> None:
+        """Check that a JSON response from the WebDriver does not have an error.
+    
+        Args:
+            response: The JSON response from the WebDriver server as a dictionary
+                object.
+    
+        Raises:
+            WebDriverException: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value["value"]
+                        status = value.get("error", None)
+                        if not status:
+                            status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                            message = value.get("value") or value.get("message")
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get("message") if isinstance(message, dict) else None
+                        else:
+                            message = value.get("message", None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith("__")]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+    
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+    
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <input type="radio" name="delivery_option[5]" id="delivery_option_2" value="2," checked=""> is not clickable at point (463, 351). Other element would receive the click: <span></span>
+E         (Session info: chrome=146.0.7680.71); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       #0 0x5930b6e23aaa <unknown>
+E       #1 0x5930b6834ea5 <unknown>
+E       #2 0x5930b688ed3b <unknown>
+E       #3 0x5930b688c972 <unknown>
+E       #4 0x5930b6889eb9 <unknown>
+E       #5 0x5930b6888fa7 <unknown>
+E       #6 0x5930b687cfa2 <unknown>
+E       #7 0x5930b687c8e7 <unknown>
+E       #8 0x5930b68cfbc0 <unknown>
+E       #9 0x5930b687b0af <unknown>
+E       #10 0x5930b687be71 <unknown>
+E       #11 0x5930b6de8924 <unknown>
+E       #12 0x5930b6deb821 <unknown>
+E       #13 0x5930b6dd4faa <unknown>
+E       #14 0x5930b6dec3ee <unknown>
+E       #15 0x5930b6dbba10 <unknown>
+E       #16 0x5930b6e10998 <unknown>
+E       #17 0x5930b6e10b68 <unknown>
+E       #18 0x5930b6e224ee <unknown>
+E       #19 0x70f3f20d3b7b <unknown>
+
+venv/lib/python3.13/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException
+----------------------------- Captured stdout call -----------------------------
+Ошибка при выборе доставки: Message: element click intercepted: Element <input type="radio" name="delivery_option[5]" id="delivery_option_2" value="2," checked=""> is not clickable at point (463, 351). Other element would receive the click: <span></span>
+  (Session info: chrome=146.0.7680.71); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+#0 0x5930b6e23aaa <unknown>
+#1 0x5930b6834ea5 <unknown>
+#2 0x5930b688ed3b <unknown>
+#3 0x5930b688c972 <unknown>
+#4 0x5930b6889eb9 <unknown>
+#5 0x5930b6888fa7 <unknown>
+#6 0x5930b687cfa2 <unknown>
+#7 0x5930b687c8e7 <unknown>
+#8 0x5930b68cfbc0 <unknown>
+#9 0x5930b687b0af <unknown>
+#10 0x5930b687be71 <unknown>
+#11 0x5930b6de8924 <unknown>
+#12 0x5930b6deb821 <unknown>
+#13 0x5930b6dd4faa <unknown>
+#14 0x5930b6dec3ee <unknown>
+#15 0x5930b6dbba10 <unknown>
+#16 0x5930b6e10998 <unknown>
+#17 0x5930b6e10b68 <unknown>
+#18 0x5930b6e224ee <unknown>
+#19 0x70f3f20d3b7b <unknown>
+
+--------------------------- Captured stdout teardown ---------------------------
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Test: test_checkout_order
++ Тест упал → делаем скриншот
+=========================== short test summary info ============================
+FAILED tests/ui/test_checkout.py::test_checkout_order - selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <input type="radio" name="delivery_option[5]" id="delivery_option_2" value="2," checked=""> is not clickable at point (463, 351). Other element would receive the click: <span></span>
+  (Session info: chrome=146.0.7680.71); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+#0 0x5930b6e23aaa <unknown>
+#1 0x5930b6834ea5 <unknown>
+#2 0x5930b688ed3b <unknown>
+#3 0x5930b688c972 <unknown>
+#4 0x5930b6889eb9 <unknown>
+#5 0x5930b6888fa7 <unknown>
+#6 0x5930b687cfa2 <unknown>
+#7 0x5930b687c8e7 <unknown>
+#8 0x5930b68cfbc0 <unknown>
+#9 0x5930b687b0af <unknown>
+#10 0x5930b687be71 <unknown>
+#11 0x5930b6de8924 <unknown>
+#12 0x5930b6deb821 <unknown>
+#13 0x5930b6dd4faa <unknown>
+#14 0x5930b6dec3ee <unknown>
+#15 0x5930b6dbba10 <unknown>
+#16 0x5930b6e10998 <unknown>
+#17 0x5930b6e10b68 <unknown>
+#18 0x5930b6e224ee <unknown>
+#19 0x70f3f20d3b7b <unknown>
+============================== 1 failed in 47.86s ==============================
+[Pipeline] }
+[Pipeline] // stage
+
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] allure
+[PrestaShop-Tests] $ /var/jenkins_home/tools/ru.yandex.qatools.allure.jenkins.tools.AllureCommandlineInstallation/allure/bin/allure generate /var/jenkins_home/workspace/PrestaShop-Tests/allure-results -c -o /var/jenkins_home/workspace/PrestaShop-Tests/allure-report
+
+Report successfully generated to /var/jenkins_home/workspace/PrestaShop-Tests/allure-report
+Allure report was successfully generated.
+Archiving Allure report via ArtifactManager…
+
+Allure artifact archived via ArtifactManager.
+Allure report copied to: /var/jenkins_home/jobs/PrestaShop-Tests/builds/23/allure-report
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] echo
+X Тесты провалились
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

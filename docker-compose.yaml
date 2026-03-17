@@ -1,0 +1,118 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      PMA_USER: root
+      PMA_PASSWORD: admin  # Add password for auto-login
+    restart: unless-stopped
+    ports:
+      - '8888:80'
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - prestashop-network
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: prestashop
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-padmin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - prestashop-network
+
+  prestashop:
+    image: prestashop/prestashop:9-apache
+    container_name: prestashop
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      DB_SERVER: db
+      DB_NAME: prestashop
+      DB_USER: root
+      DB_PASSWORD: admin
+      DB_PREFIX: ps_
+      PS_INSTALL_AUTO: "1"
+      PS_LANGUAGE: en
+      PS_COUNTRY: US
+      ADMIN_MAIL: admin@example.com # Данные для входа в админку
+      ADMIN_PASSWD: Admin123!
+      PS_FOLDER_ADMIN: administration
+      PS_FOLDER_INSTALL: install
+      PS_DOMAIN: localhost:8081
+    volumes:
+      - ps_data:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - prestashop-network
+
+  prestashop_postinstall: # Удаляет install папку чтобы работала админка
+    image: alpine:3.19
+    depends_on:
+      - prestashop
+    volumes:
+      - ps_data:/var/www/html
+    restart: "no"
+    command: >
+      sh -lc '
+        apk add --no-cache curl >/dev/null 2>&1 || true;
+        echo "Waiting for PrestaShop HTTP to respond...";
+        until curl -fsS http://prestashop/ >/dev/null; do sleep 5; done;
+        echo "Waiting for config to exist...";
+        until [ -f /var/www/html/config/settings.inc.php ] || [ -f /var/www/html/app/config/parameters.php ]; do sleep 2; done;
+        echo "Extra grace period...";
+        sleep 10;
+        echo "Removing install folders...";
+        rm -rf /var/www/html/install /var/www/html/install-dev;
+        echo "Clearing cache...";
+        rm -rf /var/www/html/var/cache/* || true;
+        echo "Done."
+      '
+    networks:
+      - prestashop-network
+
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - prestashop-network
+
+volumes:
+  db_data:
+    driver: local
+  ps_data:
+    driver: local
+  jenkins_home:
+
+networks:
+  prestashop-network:
+    driver: bridge
