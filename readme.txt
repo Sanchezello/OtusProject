@@ -103,7 +103,7 @@ allure serve ./allure-results
 14) Идем в Jenkins, создаем итем http://localhost:8080/ создаем пайплайн:
 	Definition: Pipeline sript from SCM
 	SCM- Git
-	URL- Ссыль на урл (https://github.com/Sanchezello/ProjectGodzilla.git)
+	URL- Ссыль на урл (https://github.com/Sanchezello/OtusProject.git)
 	Креды из ш.13, выпадающий список
 15) идем и запускаем пайплайн
 	
