@@ -86,7 +86,7 @@ allure serve ./allure-results
 
 	Plugins:
 	Allure
-	Git				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      github-token
+	Git				"Сгенерированный гитхаб токен"      github-token
 	Pipeline
 	Credentials     для доступа к гиту по токену
 	Matrix          важная шляпа для Allure plugin
